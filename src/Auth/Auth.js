@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Forms from './Forms'
-import { auth } from '../firebaseConfig'
+import { auth, googleProvider } from '../firebaseConfig'
 
 class Auth extends Component {
     state = {
         isUserLoggedIn: false,
         email: '',
         password: '',
+        passwordCheck: ''
     }
 
     componentDidMount() {
@@ -41,8 +42,19 @@ class Auth extends Component {
         auth.signOut()
     }
 
-    onSignUpClick = () => {
+    onLogInByGoogleClick = () => {
+        auth.signInWithPopup(googleProvider)
+            .catch(console.log)
+    }
 
+    onSignUpClick = () => {
+        if(this.state.password === this.state.passwordCheck) {
+            auth.signupNewUser(
+                this.state.email,
+                this.state.password
+            )
+            .catch(console.log)
+        } 
     }
 
     render() {
@@ -62,12 +74,14 @@ class Auth extends Component {
                         <Forms
                             email={this.state.email}
                             password={this.state.password}
+                            passwordCheck={this.state.passwordCheck}
 
                             onEmailChange={this.onEmailChange}
                             onPasswordChange={this.onPasswordChange}
 
                             onLogInClick={this.onLogInClick}
                             onSignInClick={this.onSignUpClick}
+                            onLogInByGoogleClick={this.onLogInByGoogleClick}
                         />
                 }
             </div>

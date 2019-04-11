@@ -14,8 +14,8 @@ const RegistrationForm = (props) => (
         />
         <input
             type={'password'}
-            value={props.password}
-            onChange={props.onPasswordChange}
+            value={props.passwordCheck}
+            onChange={props.onPasswordCheckChange}
         />
         <button
             onChange={props.onSignUpClick}
