@@ -5,8 +5,8 @@ import { auth } from '../firebaseConfig'
 class Auth extends Component {
     state = {
         isUserLoggedIn: false,
-        email: 'email',
-        password: 'password',
+        email: '',
+        password: '',
     }
 
     componentDidMount() {
@@ -37,6 +37,10 @@ class Auth extends Component {
             .catch(console.log)
     }
 
+    onLogOutClick = () => {
+        auth.signOut()
+    }
+
     onSignUpClick = () => {
 
     }
@@ -46,7 +50,14 @@ class Auth extends Component {
             <div>
                 {
                     this.state.isUserLoggedIn ?
-                        this.props.children
+                        <div>
+                            <button
+                                onClick={this.onLogOutClick}
+                            >
+                                LOG OUT
+                            </button>
+                            {this.props.children}
+                        </div>
                         :
                         <Forms
                             email={this.state.email}
