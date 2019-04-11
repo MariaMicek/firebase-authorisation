@@ -29,6 +29,10 @@ class Auth extends Component {
     onPasswordChange = (event) => {
         this.setState({ password: event.target.value })
     }
+    
+    onPasswordCheckChange = (event) => {
+        this.setState({ passwordCheck: event.target.value })
+    }
 
     onLogInClick = () => {
         auth.signInWithEmailAndPassword(
@@ -47,18 +51,14 @@ class Auth extends Component {
             .catch(console.log)
     }
 
-    onPasswordCheckChange = () => {
-        
-    }
-
     onSignUpClick = () => {
-        if(this.state.password === this.state.passwordCheck) {
-            auth.signupNewUser(
+        if (this.state.password === this.state.passwordCheck) {
+            auth.createUserWithEmailAndPassword(
                 this.state.email,
                 this.state.password
             )
             .catch(console.log)
-        } 
+        }
     }
 
     render() {
@@ -82,6 +82,7 @@ class Auth extends Component {
 
                             onEmailChange={this.onEmailChange}
                             onPasswordChange={this.onPasswordChange}
+                            onPasswordCheckChange={this.onPasswordCheckChange}
 
                             onLogInClick={this.onLogInClick}
                             onSignUpClick={this.onSignUpClick}

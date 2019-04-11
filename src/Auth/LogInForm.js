@@ -2,6 +2,7 @@ import React from 'react'
 
 const LogInForm = (props) => (
     <div>
+        <h2>SIGN IN</h2>
         <input
             type={'text'}
             value={props.email}

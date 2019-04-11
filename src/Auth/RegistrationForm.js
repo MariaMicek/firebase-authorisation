@@ -2,6 +2,7 @@ import React from 'react'
 
 const RegistrationForm = (props) => (
     <div>
+        <h2>SIGN UP</h2>
         <input
             type={'text'}
             value={props.email}
@@ -18,7 +19,7 @@ const RegistrationForm = (props) => (
             onChange={props.onPasswordCheckChange}
         />
         <button
-            onChange={props.onSignUpClick}
+            onClick={props.onSignUpClick}
         >
             SIGN IN
         </button>
