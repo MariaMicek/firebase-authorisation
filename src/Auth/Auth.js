@@ -10,7 +10,7 @@ class Auth extends Component {
         passwordCheck: ''
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         auth.onAuthStateChanged(
             (user) => {
                 if (user) {
@@ -47,6 +47,10 @@ class Auth extends Component {
             .catch(console.log)
     }
 
+    onPasswordCheckChange = () => {
+        
+    }
+
     onSignUpClick = () => {
         if(this.state.password === this.state.passwordCheck) {
             auth.signupNewUser(
@@ -80,7 +84,7 @@ class Auth extends Component {
                             onPasswordChange={this.onPasswordChange}
 
                             onLogInClick={this.onLogInClick}
-                            onSignInClick={this.onSignUpClick}
+                            onSignUpClick={this.onSignUpClick}
                             onLogInByGoogleClick={this.onLogInByGoogleClick}
                         />
                 }
